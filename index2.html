@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="cart-show"></div>
+
+    <script>
+        let cart = [
+            {name: 'orange', price: 12, qty: 2}, 
+            {name: 'apple', price: 20, qty: 1}
+        ];
+
+
+        const cartShow = document.getElementById('cart-show');
+
+        cart.forEach(item => {
+            cartShow.innerHTML += `<h1> ${item.name} price $${item.price} quatity ${item.qty} </h1>`;
+        });
+
+    </script>
+</body>
+</html>
