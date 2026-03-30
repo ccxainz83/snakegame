@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Snake Game</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
         body {
             text-align: center;
             font-family: Arial, Helvetica, sans-serif;
@@ -20,6 +25,55 @@
             color: red;
         }
 
+        .controller {
+            display: grid;
+            grid-template-areas:
+            ". up ."
+            "left . right"
+            ". down .";
+            gap: 10px;
+            width: 120px;
+            margin: 50px auto;
+        }
+
+                
+        button:nth-child(1) { grid-area: up; }
+        button:nth-child(2) { grid-area: left; }
+        button:nth-child(3) { grid-area: right; }
+        button:nth-child(4) { grid-area: down; }
+
+        button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        cursor: pointer;
+        }
+
+        #start {
+        margin: 20px;
+        padding: 10px;
+        width: 100px;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(45deg, #00c6ff, #0072ff);
+        border: none;
+    
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0, 114, 255, 0.5);
+        transition: all 0.3s ease;
+        }
+
+        #start:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.8);
+        }
+
+        #start:active {
+            transform: scale(0.95);
+        }
+
+       
     </style>
 </head>
 <body>
@@ -31,7 +85,15 @@
     <button id="start">Start</button>
     <canvas id="game" width="400" height="400"></canvas>
 
-    <script>
+    <br><br>
+    <div class="controller">
+        <button onclick="up()">↑</button>
+        <button onclick="left()">←</button>
+        <button onclick="right()">→</button>
+        <button onclick="down()">↓</button>
+    </div>
+
+        <script>
         const start = document.getElementById('start');
         const total = document.getElementById('total');
          const gameover = document.getElementById('gameover');
@@ -64,8 +126,37 @@
             if(e.key === "ArrowDown" && direction !== "UP")
                 direction = "DOWN";
 
+
         }
 
+        function up(e){
+             
+                direction = "UP";
+
+        }
+
+        
+        function down(e){
+             
+                direction = "DOWN";
+
+        }
+
+        
+        function left(e){
+             
+                direction = "LEFT";
+
+        }
+
+        
+        function right(e){
+             
+                direction = "RIGHT";
+
+        }
+
+      
         function draw(){
             ctx.fillStyle = "black";
             ctx.fillRect(0,0,400,400);
